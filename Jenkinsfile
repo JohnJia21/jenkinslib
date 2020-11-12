@@ -1,5 +1,3 @@
-#!groovy
-
 @Library('jenkinslib') _
 
 def tools = new org.devops.tools()
@@ -11,7 +9,16 @@ pipeline {
             steps {
                 echo 'Hello World'
                 
-                tools.PrintMes("this is my lib!")
+                script {
+                    def browsers = ['chrome', 'firefox']
+                    for (int i = 0; i < browsers.size(); ++i) {
+                        echo "Testing the ${browsers[i]} browser"
+
+                    }
+                    
+                    tools.PrintMes("this is my lib!")
+                }
+                
             }
         }
     }
